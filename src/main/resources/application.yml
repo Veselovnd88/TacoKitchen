@@ -1,0 +1,15 @@
+server:
+  port: 3535
+
+
+spring:
+  profiles:
+    active:
+      - jms-listener
+
+---
+spring:
+  profiles:
+    config:
+      activate:
+        on-profile: jms-listener
