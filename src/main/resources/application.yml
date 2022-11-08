@@ -2,10 +2,16 @@ server:
   port: 3535
 
 
+
 spring:
   profiles:
     active:
       - jms-listener
+  artemis:
+    host: artemis.tacocloud.com
+    port: 61617
+    user: kitchen
+    password: l3tm31n
 
 ---
 spring:
