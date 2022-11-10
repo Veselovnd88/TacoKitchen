@@ -8,7 +8,6 @@ import ru.veselov.TacoKitchen.messaging.OrderReceiver;
 import ru.veselov.TacoKitchen.model.KitchenUi;
 import ru.veselov.TacoKitchen.model.TacoOrder;
 
-import javax.jms.JMSException;
 
 @Controller
 @RequestMapping("/kitchen")
@@ -23,12 +22,10 @@ public class KitchenController {
     }
     @GetMapping
     public String getOrder(){
-        try {
+
             TacoOrder tacoOrder = orderReceiver.receiveOrder();
             kitchenUi.displayOrder(tacoOrder);
-        } catch (JMSException e) {
-            e.printStackTrace();
-        };
+
         return "home";
     }
 }
