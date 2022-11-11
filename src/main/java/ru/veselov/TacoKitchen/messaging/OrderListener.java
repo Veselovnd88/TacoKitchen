@@ -1,8 +1,7 @@
 package ru.veselov.TacoKitchen.messaging;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.kafka.annotation.KafkaListener;
 import ru.veselov.TacoKitchen.model.KitchenUi;
 import ru.veselov.TacoKitchen.model.TacoOrder;
 
@@ -14,8 +13,8 @@ public class OrderListener {
         this.kitchenUi = kitchenUi;
     }
 
-    @RabbitListener(queues = "tacocloud.order.queue")
-    public void receiveOrder(TacoOrder order){
+    @KafkaListener(topics = "orders.topic")
+    public void handle(TacoOrder order){
         kitchenUi.displayOrder(order);
     }
 

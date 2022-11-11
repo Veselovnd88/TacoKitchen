@@ -4,17 +4,11 @@ server:
 
 
 spring:
-  rabbitmq:
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
     template:
-      receive-timeout: 1000
-      exchange: tacocloud.order
-      routing-key: kitchens.central
-
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-
+      default-topic: order.topic
 ---
 spring:
   profiles:
